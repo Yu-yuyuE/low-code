@@ -1,0 +1,36 @@
+.library-container {
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    &-item {
+        width: 240px;
+        margin: 20px auto;
+        display: flex;
+        justify-content: center;
+        background-color: #fff;
+        padding: 40px;
+        box-sizing: border-box;
+        cursor: move;
+        min-height: 100px;
+        -webkit-user-select: none;
+        user-select: none;
+        position: relative;
+        > span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #95d1f4;
+            color: #fff;
+        }
+        ::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            opacity: 0.1;
+        }
+    }
+}
