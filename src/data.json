@@ -1,0 +1,26 @@
+{
+    "container": {
+        "width": 1500,
+        "height": 1500
+    },
+    "blocks": [
+        {
+            "top": 100,
+            "left": 100,
+            "zIndex": 1,
+            "key": "text"
+        },
+        {
+            "top": 200,
+            "left": 200,
+            "zIndex": 1,
+            "key": "text"
+        },
+        {
+            "top": 300,
+            "left": 300,
+            "zIndex": 1,
+            "key": "text"
+        }
+    ]
+}
