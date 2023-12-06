@@ -1,4 +1,4 @@
-import { computed, defineComponent } from "vue";
+import { computed, defineComponent, ref } from "vue";
 import "./editor.scss";
 import EditorBlock from "./editorBlock";
 import Library from "./library";
@@ -19,7 +19,7 @@ export default defineComponent({
             width: data.value.container.width + "px",
             height: data.value.container.height + "px"
         }));
-        console.log(data.value);
+        const canvasRef = ref(null);
         return () => (
             <div class="editor">
                 <div class="editor-left">
@@ -34,6 +34,7 @@ export default defineComponent({
                         <div
                             class="editor-container-canvas__content"
                             style={containerStyles.value}
+                            ref={canvasRef}
                         >
                             {data.value.blocks.map((block) => (
                                 <EditorBlock block={block}></EditorBlock>
