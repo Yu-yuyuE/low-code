@@ -40,7 +40,7 @@ export default defineComponent({
                     left: e.offsetX,
                     key: currentComponent.key,
                     zIndex: 1,
-                    alignCenter: true // 表示希望松开时居中，在组件内部通过钩子函数onMounted实现
+                    alignCenter: true // 表示希望拖拽松开时居中，在组件内部通过钩子函数onMounted实现
                 }
             ]);
 
