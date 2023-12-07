@@ -33,6 +33,11 @@
             &__content {
                 background-color: rgb(200, 211, 190);
                 position: relative;
+                .editor-block-focused {
+                    &::after {
+                        border: 2px dashed red;
+                    }
+                }
             }
         }
     }

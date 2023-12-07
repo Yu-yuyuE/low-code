@@ -15,7 +15,6 @@ export default defineComponent({
             zIndex: props.block.zIndex
         }));
         const config = inject("config");
-
         const blockRef = ref(null);
 
         onMounted(() => {
@@ -28,17 +27,11 @@ export default defineComponent({
             }
         });
 
-        console.log(props.block);
-
         return () => {
             const component = config.componentMap[props.block.key];
             const RenderComponent = component.render();
             return (
-                <div
-                    class="block-container"
-                    style={blockStyles.value}
-                    ref={blockRef}
-                >
+                <div class="block-container" style={blockStyles.value} ref={blockRef}>
                     {RenderComponent}
                 </div>
             );

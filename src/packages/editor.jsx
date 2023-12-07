@@ -3,6 +3,7 @@ import "./editor.scss";
 import EditorBlock from "./editorBlock";
 import Library from "./library";
 import { cloneDeep } from "lodash";
+import { useFocus } from "./useFocus";
 
 export default defineComponent({
     props: {
@@ -26,19 +27,13 @@ export default defineComponent({
         }));
         // 获取画布DOMref，传入Library中
         const canvasRef = ref(null);
-        // 将blocks暴露给全局
-        const blocks = ref(data.value.blocks);
-        const setBlocks = (val) => {
-            console.log(blocks.value);
-            console.log(val);
-            blocks.value = val;
-        };
-        provide("blocks", { blocks, setBlocks });
+        const { focusData, blockMousedown, canvasMousedown } = useFocus(data);
 
+        // 实现拖拽多个元素
         return () => (
             <div class="editor">
                 <div class="editor-left">
-                    <Library canvasRef={canvasRef}></Library>
+                    <Library canvasRef={canvasRef} data={data}></Library>
                 </div>
                 <div class="editor-top">菜单栏</div>
                 <div class="editor-right">属性栏</div>
@@ -50,9 +45,14 @@ export default defineComponent({
                             class="editor-container-canvas__content"
                             style={containerStyles.value}
                             ref={canvasRef}
+                            onMousedown={canvasMousedown}
                         >
-                            {blocks.value.map((block) => (
-                                <EditorBlock block={block}></EditorBlock>
+                            {data.value.blocks.map((block) => (
+                                <EditorBlock
+                                    class={block.focus ? "editor-block-focused" : ""}
+                                    block={block}
+                                    onMousedown={(e) => blockMousedown(e, block)}
+                                ></EditorBlock>
                             ))}
                         </div>
                     </div>
