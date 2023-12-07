@@ -29,6 +29,7 @@ export default defineComponent({
         const canvasRef = ref(null);
         const { focusData, blockMousedown, canvasMousedown } = useFocus(data);
 
+        // 实现获取焦点
         // 实现拖拽多个元素
         return () => (
             <div class="editor">
