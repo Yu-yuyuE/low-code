@@ -1,6 +1,6 @@
 import { computed } from "vue";
 
-export function useFocus(data) {
+export function useFocus(data, callback) {
     const focusData = computed(() => {
         let focused = [],
             unfocused = [];
@@ -30,6 +30,9 @@ export function useFocus(data) {
                 block.focus = false;
             }
         }
+
+        // 鼠标按下之后，可能进行连续性的动作，回调传入
+        callback(e);
     };
     const canvasMousedown = () => {
         // 点击画布，取消所有焦点

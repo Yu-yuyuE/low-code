@@ -27,7 +27,9 @@ export default defineComponent({
         }));
         // 获取画布DOMref，传入Library中
         const canvasRef = ref(null);
-        const { focusData, blockMousedown, canvasMousedown } = useFocus(data);
+        const { focusData, blockMousedown, canvasMousedown } = useFocus(data, () => {
+            console.log(focusData.value.focused);
+        });
 
         // 实现获取焦点
         // 实现拖拽多个元素
